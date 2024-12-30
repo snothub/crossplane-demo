@@ -8,6 +8,8 @@ metadata:
 spec:
   project: production
   source:
+    directory:
+      recurse: true
     path: .
     repoURL: https://github.com/snothub/potential-system
     targetRevision: HEAD
