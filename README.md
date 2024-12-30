@@ -34,4 +34,4 @@ az aks get-credentials --resource-group ds-dev-aks --name apps-cluster --overwri
 argocd cluster add apps-cluster --name apps-cluster
 
 Get FQDN of new cluster
-kubectl get kubernetescluster -o custom-columns=ADDR:.status.atProvider.fqdn
+kubectl get kubernetescluster -o custom-columns=NAME:.status.atProvider.nodeResourceGroup,ADDR:.status.atProvider.fqdn
