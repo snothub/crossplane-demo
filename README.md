@@ -26,5 +26,12 @@ generic azure-secret-forte \
 View the secret with kubectl describe secret
 
 
+
+After creating a new cluster:
+
+az account set --subscription 98138d28-11c8-4986-b8ed-eba050316c32
+az aks get-credentials --resource-group ds-dev-aks --name apps-cluster --overwrite-existing
+argocd cluster add apps-cluster --name apps-cluster
+
 Get FQDN of new cluster
 kubectl get kubernetescluster -o custom-columns=ADDR:.status.atProvider.fqdn
