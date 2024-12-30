@@ -20,3 +20,105 @@ spec:
       prune: true
     syncOptions:
     - CreateNamespace=true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: distr
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: production
+  source:
+    path: distr
+    repoURL: https://github.com/snothub/potential-system
+    targetRevision: HEAD
+  destination:
+    namespace: production
+    server: https://dns-hanmxanb.hcp.norwayeast.azmk8s.io:443
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: products
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: production
+  source:
+    path: products
+    repoURL: https://github.com/snothub/potential-system
+    targetRevision: HEAD
+  destination:
+    namespace: production
+    server: https://dns-hanmxanb.hcp.norwayeast.azmk8s.io:443
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bff
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: production
+  source:
+    path: bff
+    repoURL: https://github.com/snothub/potential-system
+    targetRevision: HEAD
+  destination:
+    namespace: production
+    server: https://dns-hanmxanb.hcp.norwayeast.azmk8s.io:443
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ui
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: production
+  source:
+    path: ui
+    repoURL: https://github.com/snothub/potential-system
+    targetRevision: HEAD
+  destination:
+    namespace: production
+    server: https://dns-hanmxanb.hcp.norwayeast.azmk8s.io:443
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
