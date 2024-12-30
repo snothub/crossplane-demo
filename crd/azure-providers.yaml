@@ -1,0 +1,80 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-containerregistry
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-containerregistry:v1.10.1
+
+---
+
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-apimanagement
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-apimanagement:v1.10.1
+
+---
+
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-appconfiguration
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-appconfiguration:v1.10.1
+
+---
+
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-compute
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-compute:v1.10.1
+
+---
+
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-sql
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-sql:v1.10.0
+
+
+---
+
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-keyvault
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-keyvault:v1.10.1
+
+
+---
+
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-containerservice
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-containerservice:v1.10.1
+
+---
+
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-web
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-web:v1.10.2
+
+---
+
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-storage
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-storage:v1.10.2

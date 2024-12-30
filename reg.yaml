@@ -1,0 +1,29 @@
+apiVersion: containerregistry.azure.upbound.io/v1beta1
+kind: Registry
+metadata:
+  name: dsdevcontainerregistry
+  annotations:
+    crossplane.io/external-name: dsdevcontainerregistry
+spec:
+  managementPolicies: ["Observe"]
+  forProvider: {}
+
+---
+
+apiVersion: containerregistry.azure.upbound.io/v1beta1
+kind: Registry
+metadata:
+  name: upbound
+spec:
+  forProvider:
+    adminEnabled: false
+    dataEndpointEnabled: true
+    georeplications:
+      - location: East US
+        tags: {}
+        zoneRedundancyEnabled: true
+    location: West Europe
+    resourceGroupNameRef:
+      name: ds-dev-aks
+    sku: Premium
+
