@@ -8,7 +8,7 @@ cd crossplane-demo
 
 nix-shell --run $SHELL
 
-chmod +x controller/00-intro.sh
+chmod +x controller/*
 
 ./controller/00-intro.sh
 
