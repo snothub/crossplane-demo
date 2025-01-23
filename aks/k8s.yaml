@@ -17,15 +17,9 @@
 #     identity:
 #       - type: SystemAssigned
 #     resourceGroupNameRef:
-#       name: dot-group
+#       name: ds-aks-group
 
 
 ---
 
-apiVersion: azure.upbound.io/v1beta1
-kind: ResourceGroup
-metadata:
-  name: ds-aks-group
-spec:
-  forProvider:
-    location: Norway East
+
