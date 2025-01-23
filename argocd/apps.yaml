@@ -1,20 +1,19 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: a-team
+  name: production
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/vfarcic/crossplane-tutorial
+    repoURL: https://github.com/snothub/crossplane-demo
     targetRevision: HEAD
-    path: a-team
+    path: apps
   destination:
     server: https://kubernetes.default.svc
-    namespace: a-team
+    namespace: production
   syncPolicy:
     automated:
       selfHeal: true
