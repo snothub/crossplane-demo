@@ -1,0 +1,12 @@
+apiVersion: keyvault.azure.upbound.io/v1beta2
+kind: Vault
+metadata:
+  name: kv-{{ .Release.Name }}-{{ .Values.service.name }}
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    resourceGroupNameRef:
+      name: rg-{{ .Release.Name }}-{{ .Values.service.name }}
+      policy:
+        resolution: Required
+        resolve: IfNotPresent

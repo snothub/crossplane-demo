@@ -55,16 +55,19 @@ helm upgrade --install crossplane crossplane \
     --repo https://charts.crossplane.io/stable \
     --namespace crossplane-system --create-namespace --wait
 
-kubectl apply \
-    --filename providers/provider-kubernetes-incluster.yaml
+# kubectl apply \
+#     --filename providers/provider-kubernetes-incluster.yaml
 
-kubectl apply --filename providers/provider-helm-incluster.yaml
+# kubectl apply --filename providers/provider-helm-incluster.yaml
 
-kubectl apply --filename providers/dot-kubernetes.yaml
+# kubectl apply --filename providers/dot-kubernetes.yaml
 
-kubectl apply --filename providers/dot-sql.yaml
+# kubectl apply --filename providers/dot-sql.yaml
 
-kubectl apply --filename providers/dot-app.yaml
+# kubectl apply --filename providers/dot-app.yaml
+
+kubectl apply --filename providers/azure-providers.yaml
+kubectl apply --filename providers/azure-provider-config.yaml
 
 gum spin --spinner dot \
     --title "Waiting for Crossplane providers..." -- sleep 60
