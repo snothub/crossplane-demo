@@ -11,6 +11,11 @@ spec:
     path: aks
     repoURL: https://github.com/snothub/crossplane-demo
     targetRevision: HEAD
+    # helm:
+    #   releaseName: aks-prod
+    #   valueFiles:
+    #   - values.yaml
+    #   ignoreMissingValueFiles: true
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
