@@ -12,7 +12,7 @@ spec:
     repoURL: https://github.com/snothub/crossplane-demo
     targetRevision: HEAD
     helm:
-      releaseName: aks-prod
+      releaseName: prod
       valueFiles:
       - values.yaml
       ignoreMissingValueFiles: true
