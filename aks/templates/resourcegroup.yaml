@@ -1,7 +1,7 @@
 apiVersion: azure.upbound.io/v1beta1
 kind: ResourceGroup
 metadata:
-  name: ds-aks-group
+  name: rg-{{ .Release.Name }}-{{ .Values.service.name }}
 spec:
   forProvider:
     location: Norway East
