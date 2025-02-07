@@ -30,7 +30,7 @@ spec:
   forProvider:
     skuName: premium
     location: Norway East
-    tenantId: ${data.azurerm_client_config.current.tenant_id}
+    tenantId: {{ .Values.tenant.id }}
     resourceGroupNameSelector:
       matchLabels:
         testing.upbound.io/rg-name: rg-{{ .Release.Name }}
