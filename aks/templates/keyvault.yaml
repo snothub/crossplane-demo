@@ -1,7 +1,31 @@
+# apiVersion: keyvault.azure.upbound.io/v1beta2
+# kind: Vault
+# metadata:
+#   annotations:
+#     meta.upbound.io/example-id: keyvault/v1beta2/key
+#   labels:
+#     testing.upbound.io/example-name: example
+#   name: uptest-random
+# spec:
+#   forProvider:
+#     location: West Europe
+#     resourceGroupNameSelector:
+#       matchLabels:
+#         testing.upbound.io/example-name: example
+#     skuName: premium
+#     softDeleteRetentionDays: 7
+#     tenantId: ${data.azurerm_client_config.current.tenant_id}
+
+# ---
+
 apiVersion: keyvault.azure.upbound.io/v1beta2
 kind: Vault
 metadata:
   name: kv-{{ .Release.Name }}-{{ .Values.service.name }}
+  annotations:
+    meta.upbound.io/example-id: keyvault/v1beta2/key
+  labels:
+    testing.upbound.io/kv-name: kv-{{ .Release.Name }}
 spec:
   deletionPolicy: Delete
   forProvider:
