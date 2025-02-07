@@ -1,20 +1,25 @@
-apiVersion: containerservice.azure.upbound.io/v1beta1
-kind: KubernetesCluster
-metadata:
-  labels:
-    testing.upbound.io/example-name: k8s-apps
-  name: apps-cluster
-spec:
-  forProvider:
-    defaultNodePool:
-      - enableHostEncryption: false
-        name: default
-        nodeCount: 1
-        upgradeSettings:
-          - maxSurge: 10%
-        vmSize: Standard_DS2_v2
-    dnsPrefix: dns
-    identity:
-      - type: SystemAssigned
-    location: Norway East
-    resourceGroupName: ds-dev-aks
+# apiVersion: containerservice.azure.upbound.io/v1beta1
+# kind: KubernetesCluster
+# metadata:
+#   labels:
+#     testing.upbound.io/example-name: k8s-apps
+#   name: apps-cluster
+# spec:
+#   forProvider:
+#     defaultNodePool:
+#       - enableHostEncryption: false
+#         name: default
+#         nodeCount: 1
+#         upgradeSettings:
+#           - maxSurge: 10%
+#         vmSize: Standard_DS2_v2
+#     dnsPrefix: dns
+#     identity:
+#       - type: SystemAssigned
+#     resourceGroupNameRef:
+#       name: ds-aks-group
+
+
+---
+
+

@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: production
+  project: default
   source:
     path: aks
     repoURL: https://github.com/snothub/crossplane-demo
@@ -17,3 +17,4 @@ spec:
     automated:
       selfHeal: true
       prune: true
+
