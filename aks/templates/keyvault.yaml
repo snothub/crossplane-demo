@@ -27,10 +27,7 @@ metadata:
   labels:
     testing.upbound.io/kv-name: kv-{{ .Release.Name }}
 spec:
-  deletionPolicy: Delete
   forProvider:
-    resourceGroupNameRef:
-      name: rg-{{ .Release.Name }}-{{ .Values.service.name }}
-      policy:
-        resolution: Required
-        resolve: IfNotPresent
+    resourceGroupNameSelector:
+      matchLabels:
+        testing.upbound.io/rg-name: kv-{{ .Release.Name }}
