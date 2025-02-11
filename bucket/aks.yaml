@@ -7,15 +7,16 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  source:
+  sources:
+  - repoURL: https://github.com/snothub/crossplane-demo
     path: aks
-    repoURL: https://github.com/snothub/crossplane-demo
     targetRevision: HEAD
     helm:
-      releaseName: prod
       valueFiles:
-      - values.yaml
-      ignoreMissingValueFiles: true
+      - $values/charts/aks/dev-values.yaml
+  - repoURL: 'https://github.com/snothub/probable-fiesta.git'
+    targetRevision: dev
+    ref: values
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
