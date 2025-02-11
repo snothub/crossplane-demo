@@ -34,3 +34,5 @@ spec:
     resourceGroupNameSelector:
       matchLabels:
         testing.upbound.io/rg-name: rg-{{ .Release.Name }}
+  providerConfigRef: {{ .Values.service.providerconfigref }}
+  
