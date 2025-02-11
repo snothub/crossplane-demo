@@ -24,3 +24,30 @@ spec:
       selfHeal: true
       prune: true
 
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aks-prod
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+  - repoURL: https://github.com/snothub/crossplane-demo
+    path: aks
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - $values/charts/aks/prod-values.yaml
+  - repoURL: https://github.com/snothub/probable-fiesta
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
