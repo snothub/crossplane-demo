@@ -74,8 +74,6 @@ gum spin --spinner dot \
 kubectl wait --for=condition=healthy provider.pkg.crossplane.io \
     --all --timeout=1800s
 
-kubectl apply --filename providers/azure-provider-config.yaml
-
 ###########
 # Kubeseal#
 ###########
