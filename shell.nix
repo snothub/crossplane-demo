@@ -4,6 +4,7 @@
     gh
     kind
     kubectl
+    kubeseal
     yq-go
     jq
     azure-cli
