@@ -98,4 +98,4 @@ helm upgrade --install argocd argo-cd \
 
 kubectl apply --filename argocd/apps.yaml
 
-
+kubectl apply --filename sealedsecrets/*
