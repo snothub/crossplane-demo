@@ -95,5 +95,3 @@ helm upgrade --install argocd argo-cd \
     --values argocd/helm-values.yaml --wait
 
 kubectl apply --filename argocd/apps.yaml
-
-kubectl apply --filename sealedsecrets/*

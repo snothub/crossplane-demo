@@ -11,5 +11,5 @@ kubectl --namespace crossplane-system create secret generic azure-creds-$AZURE_T
 kubectl apply -f sealedsecrets/*
 rm azure-creds-$AZURE_TENANT_NAME.json
 
-helm upgrade --install --set config.name=azure-creds-$AZURE_TENANT_NAME azure-creds-$AZURE_TENANT_NAME ./providerconfig 
+helm upgrade --install --set config.name=$AZURE_TENANT_NAME pr-config ./providerconfig 
 
