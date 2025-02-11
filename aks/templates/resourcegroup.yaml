@@ -7,4 +7,5 @@ metadata:
 spec:
   forProvider:
     location: Norway East
-  providerConfigRef: {{ .Values.service.providerconfigref }}
+  providerConfigRef:
+    name: {{ .Values.service.providerconfigref }}
