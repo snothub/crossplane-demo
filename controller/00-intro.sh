@@ -67,13 +67,19 @@ helm upgrade --install crossplane crossplane \
 # kubectl apply --filename providers/dot-app.yaml
 
 kubectl apply --filename providers/azure-providers.yaml
-kubectl apply --filename providers/azure-provider-config.yaml
 
 gum spin --spinner dot \
     --title "Waiting for Crossplane providers..." -- sleep 60
 
 kubectl wait --for=condition=healthy provider.pkg.crossplane.io \
     --all --timeout=1800s
+
+kubectl apply --filename providers/azure-provider-config.yaml
+
+###########
+# Kubeseal#
+###########
+kubectl apply -f https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.28.0/controller.yaml
 
 ###########
 # Argo CD #
