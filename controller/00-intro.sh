@@ -1,11 +1,6 @@
 #!/bin/sh
 set -e
 
-gum style \
-	--foreground 212 --border-foreground 212 --border double \
-	--margin "1 2" --padding "2 4" \
-	'Setup for the Introduction chapter'
-
 rm -f .env
 
 #########################
