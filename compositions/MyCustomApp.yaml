@@ -1,10 +1,13 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata: 
-  name: fdcustomapps.fortedigital.com
+  name: xfdcustomapps.fortedigital.com
 spec:
   group: fortedigital.com
   names:
+    kind: xFdCustomApp
+    plural: xfdcustomapps
+  claimNames:
     kind: FdCustomApp
     plural: fdcustomapps
   versions:
@@ -47,7 +50,7 @@ metadata:
 spec:
   compositeTypeRef:
     apiVersion: fortedigital.com/v1alpha1
-    kind: FdCustomApp
+    kind: xFdCustomApp
   patchSets:
   - name: metadata
     patches:
