@@ -87,8 +87,8 @@ spec:
       patchSetName: location
     - type: PatchSet
       patchSetName: providerconfig
-    - fromFieldPath: spec.id
-      toFieldPath: metadata.name
+    - fromFieldPath: spec.location
+      toFieldPath: spec.forProvider.location
       transforms:
       - type: map
         map:

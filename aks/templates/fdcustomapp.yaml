@@ -10,6 +10,5 @@ spec:
   compositionSelector:
     matchLabels:
       provider: azure
-  location: ea
   providerconfig: {{ .Values.service.providerconfigref }}
   tenant: {{ .Values.tenant.id }}
