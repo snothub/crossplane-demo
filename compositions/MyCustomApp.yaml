@@ -1,0 +1,123 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata: 
+  name: fdcustomapps.fortedigital.com
+spec:
+  group: fortedigital.com
+  names:
+    kind: FdCustomApp
+    plural: fdcustomapps
+  versions:
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Application ID
+              tenant:
+                type: string
+                description: Azure Tenant ID
+              providerconfig:
+                type: string
+                description: ProviderConfigRef
+              location:
+                description: "Supported locations: nea (Norway East), ne (North Europe), eastus (East US)"
+                type: string
+                default: nea
+            required:
+            - id
+            - providerconfig
+            - tenant
+
+--- 
+
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: mycustomapp
+  labels:
+    provider: azure
+spec:
+  compositeTypeRef:
+    apiVersion: fortedigital.com/v1alpha1
+    kind: FdCustomApp
+  patchSets:
+  - name: metadata
+    patches:
+    - fromFieldPath: metadata.annotations
+      toFieldPath: metadata.annotations
+    - fromFieldPath: metadata.labels
+      toFieldPath: metadata.labels
+  - name: providerconfig
+    patches:
+    - fromFieldPath: spec.providerconfig
+      toFieldPath: spec.providerConfigRef
+  - name: location
+    patches:
+    - fromFieldPath: spec.location
+      toFieldPath: spec.forProvider.location
+  resources:
+  - name: resourcegroup
+    base:
+      apiVersion: azure.upbound.io/v1beta1
+      kind: ResourceGroup
+      metadata:
+        name: rg-custom
+        labels:
+          testing.upbound.io/rg-name: rg-custom
+      spec:
+        forProvider:
+          location: Norway East
+        providerConfigRef:
+          name: fd-config
+    patches:
+    - type: PatchSet
+      patchSetName: metadata
+    - type: PatchSet
+      patchSetName: location
+    - type: PatchSet
+      patchSetName: providerconfig
+    - fromFieldPath: spec.id
+      toFieldPath: metadata.name
+      transforms:
+      - type: map
+        map:
+          nea: Norway East
+          ne: North Europe
+          eastus: eastus
+  - name: kv
+    patches:
+    - type: PatchSet
+      patchSetName: metadata
+    - type: PatchSet
+      patchSetName: location
+    - type: PatchSet
+      patchSetName: providerconfig
+    - fromFieldPath: spec.tenant
+      toFieldPath: spec.forProvider.tenantId
+    base:
+      apiVersion: keyvault.azure.upbound.io/v1beta2
+      kind: Vault
+      metadata:
+        name: kv-custom
+        annotations:
+          meta.upbound.io/example-id: keyvault/v1beta2/key
+        labels:
+          testing.upbound.io/kv-name: kv-custom
+      spec:
+        forProvider:
+          skuName: premium
+          location: Norway East
+          tenantId: fd-tenant
+          resourceGroupNameSelector:
+            matchLabels:
+              testing.upbound.io/rg-name: rg-custom
+        providerConfigRef:
+          name: fd-config

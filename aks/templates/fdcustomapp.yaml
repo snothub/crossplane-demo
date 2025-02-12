@@ -1,0 +1,11 @@
+apiVersion: fortedigital.com/v1alpha1
+kind: FdCustomApp
+metadata:
+  name: rg-{{ .Release.Name }}-{{ .Values.service.name }}
+  labels:
+    testing.upbound.io/rg-name: rg-{{ .Release.Name }}
+spec:
+  id: {{ .Values.service.name }}
+  location: ea
+  providerconfig: {{ .Values.service.providerconfigref }}
+  tenant: {{ .Values.tenant.id }}
