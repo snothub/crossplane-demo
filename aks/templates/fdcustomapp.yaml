@@ -2,6 +2,7 @@ apiVersion: fortedigital.com/v1alpha1
 kind: FdCustomAppClaim
 metadata:
   name: {{ .Release.Name }}-{{ .Values.service.name }}
+  namespace: default
   labels:
     testing.upbound.io/rg-name: rg-{{ .Release.Name }}
 spec:
