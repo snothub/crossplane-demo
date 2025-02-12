@@ -1,5 +1,5 @@
 apiVersion: fortedigital.com/v1alpha1
-kind: FdCustomApp
+kind: FdCustomAppClaim
 metadata:
   name: rg-{{ .Release.Name }}-{{ .Values.service.name }}
   labels:
