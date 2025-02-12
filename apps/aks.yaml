@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aks-dev-forte
+  name: dev-fd
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -29,7 +29,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aks-prod-forte
+  name: pr-fd
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
