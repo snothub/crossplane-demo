@@ -6,6 +6,9 @@ metadata:
     testing.upbound.io/rg-name: rg-{{ .Release.Name }}
 spec:
   id: {{ .Values.service.name }}
+  compositionSelector:
+    matchLabels:
+      provider: azure
   location: ea
   providerconfig: {{ .Values.service.providerconfigref }}
   tenant: {{ .Values.tenant.id }}
