@@ -1,7 +1,7 @@
 apiVersion: fortedigital.com/v1alpha1
 kind: FdCustomAppClaim
 metadata:
-  name: rg-{{ .Release.Name }}-{{ .Values.service.name }}
+  name: {{ .Release.Name }}-{{ .Values.service.name }}
   labels:
     testing.upbound.io/rg-name: rg-{{ .Release.Name }}
 spec:
