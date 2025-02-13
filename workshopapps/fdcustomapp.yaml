@@ -12,3 +12,4 @@ spec:
       provider: azure
   providerconfig: pr-config-fdig
   tenant: 063afd9e-5fcb-48d2-a769-ca31b0f5b443
+  location: eastus
