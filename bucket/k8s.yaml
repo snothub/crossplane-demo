@@ -2,7 +2,7 @@
 # kind: KubernetesCluster
 # metadata:
 #   labels:
-#     testing.upbound.io/example-name: k8s-apps
+#     example-name: k8s-apps
 #   name: apps-cluster
 # spec:
 #   forProvider:

@@ -3,7 +3,7 @@ kind: ResourceGroup
 metadata:
   name: rg-{{ .Release.Name }}-{{ .Values.service.name }}
   labels:
-    testing.upbound.io/rg-name: rg-{{ .Release.Name }}
+    rg-name: rg-{{ .Release.Name }}
 spec:
   forProvider:
     location: Norway East

@@ -72,14 +72,14 @@ spec:
       apiVersion: azure.upbound.io/v1beta1
       kind: ResourceGroup
       metadata:
-        name: rg-custom
+        name: placeholder
         labels:
-          testing.upbound.io/rg-name: rg-custom
+          rg-name: placeholder
       spec:
         forProvider:
           location: Norway East
         providerConfigRef:
-          name: fd-config
+          name: placeholder
     patches:
     - type: PatchSet
       patchSetName: metadata
@@ -118,7 +118,7 @@ spec:
         string:
           fmt: "kv-%s"
     - fromFieldPath: spec.id
-      toFieldPath: "spec.forProvider.resourceGroupNameSelector.matchLabels.testing.upbound.io/rg-name"
+      toFieldPath: "spec.forProvider.resourceGroupNameSelector.matchLabels.rg-name"
       transforms:
       - type: string
         string:
@@ -127,18 +127,18 @@ spec:
       apiVersion: keyvault.azure.upbound.io/v1beta2
       kind: Vault
       metadata:
-        name: kv-custom
+        name: placeholder
         annotations:
           meta.upbound.io/example-id: keyvault/v1beta2/key
         labels:
-          testing.upbound.io/kv-name: kv-custom
+          kv-name: placeholder
       spec:
         forProvider:
           skuName: premium
           location: Norway East
-          tenantId: fd-tenant
+          tenantId: placeholder
           resourceGroupNameSelector:
             matchLabels:
-              testing.upbound.io/rg-name: rg-custom
+              rg-name: placeholder
         providerConfigRef:
-          name: fd-config
+          name: placeholder

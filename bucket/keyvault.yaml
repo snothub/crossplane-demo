@@ -4,14 +4,14 @@
 #   annotations:
 #     meta.upbound.io/example-id: keyvault/v1beta2/key
 #   labels:
-#     testing.upbound.io/example-name: example
+#     example-name: example
 #   name: uptest-random
 # spec:
 #   forProvider:
 #     location: West Europe
 #     resourceGroupNameSelector:
 #       matchLabels:
-#         testing.upbound.io/example-name: example
+#         example-name: example
 #     skuName: premium
 #     softDeleteRetentionDays: 7
 #     tenantId: ${data.azurerm_client_config.current.tenant_id}
@@ -25,7 +25,7 @@ metadata:
   annotations:
     meta.upbound.io/example-id: keyvault/v1beta2/key
   labels:
-    testing.upbound.io/kv-name: kv-{{ .Release.Name }}
+    kv-name: kv-{{ .Release.Name }}
 spec:
   forProvider:
     skuName: premium
@@ -33,7 +33,7 @@ spec:
     tenantId: {{ .Values.tenant.id }}
     resourceGroupNameSelector:
       matchLabels:
-        testing.upbound.io/rg-name: rg-{{ .Release.Name }}
+        rg-name: rg-{{ .Release.Name }}
   providerConfigRef:
     name: {{ .Values.service.providerconfigref }}
   

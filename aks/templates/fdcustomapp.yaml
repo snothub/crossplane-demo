@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}-{{ .Values.service.name }}
   namespace: default
   labels:
-    testing.upbound.io/rg-name: rg-{{ .Release.Name }}
+    rg-name: rg-{{ .Release.Name }}
 spec:
   id: {{ .Values.service.name }}
   compositionSelector:
