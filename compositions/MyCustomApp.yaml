@@ -66,6 +66,12 @@ spec:
     patches:
     - fromFieldPath: spec.location
       toFieldPath: spec.forProvider.location
+      transforms:
+      - type: map
+        map:
+          nea: norwayeast
+          ne: northeurope
+          eastus: eastus
   resources:
   - name: resourcegroup
     base:
@@ -77,7 +83,7 @@ spec:
           rg-name: placeholder
       spec:
         forProvider:
-          location: Norway East
+          location: placeholder
         providerConfigRef:
           name: placeholder
     patches:
@@ -87,16 +93,14 @@ spec:
       patchSetName: location
     - type: PatchSet
       patchSetName: providerconfig
-    - fromFieldPath: spec.location
-      toFieldPath: spec.forProvider.location
-      transforms:
-      - type: map
-        map:
-          nea: Norway East
-          ne: North Europe
-          eastus: eastus
     - fromFieldPath: spec.id
       toFieldPath: metadata.name
+      transforms:
+      - type: string
+        string:
+          fmt: "rg-%s"
+    - fromFieldPath: spec.id
+      toFieldPath: metadata.labels.rg-name
       transforms:
       - type: string
         string:
@@ -135,7 +139,7 @@ spec:
       spec:
         forProvider:
           skuName: premium
-          location: Norway East
+          location: placeholder
           tenantId: placeholder
           resourceGroupNameSelector:
             matchLabels:
