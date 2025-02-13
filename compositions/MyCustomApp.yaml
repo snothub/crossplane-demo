@@ -61,7 +61,7 @@ spec:
   - name: providerconfig
     patches:
     - fromFieldPath: spec.providerconfig
-      toFieldPath: spec.providerConfigRef
+      toFieldPath: spec.providerConfigRef.name
   - name: location
     patches:
     - fromFieldPath: spec.location
@@ -95,6 +95,12 @@ spec:
           nea: Norway East
           ne: North Europe
           eastus: eastus
+    - fromFieldPath: spec.id
+      toFieldPath: metadata.name
+      transforms:
+      - type: string
+        string:
+          fmt: "rg-%s"
   - name: kv
     patches:
     - type: PatchSet
@@ -105,6 +111,18 @@ spec:
       patchSetName: providerconfig
     - fromFieldPath: spec.tenant
       toFieldPath: spec.forProvider.tenantId
+    - fromFieldPath: spec.id
+      toFieldPath: metadata.name
+      transforms:
+      - type: string
+        string:
+          fmt: "kv-%s"
+    - fromFieldPath: spec.id
+      toFieldPath: "spec.forProvider.resourceGroupNameSelector.matchLabels.testing.upbound.io/rg-name"
+      transforms:
+      - type: string
+        string:
+          fmt: "rg-%s"
     base:
       apiVersion: keyvault.azure.upbound.io/v1beta2
       kind: Vault
