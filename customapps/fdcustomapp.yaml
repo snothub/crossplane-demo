@@ -1,0 +1,14 @@
+apiVersion: fortedigital.com/v1alpha1
+kind: FdCustomAppClaim
+metadata:
+  name: fortedevapp
+  namespace: default
+  labels:
+    context: dev
+spec:
+  id: fddev
+  compositionSelector:
+    matchLabels:
+      provider: azure
+  providerconfig: pr-config-fdig
+  tenant: 063afd9e-5fcb-48d2-a769-ca31b0f5b443
