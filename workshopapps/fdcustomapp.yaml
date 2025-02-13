@@ -1,12 +1,12 @@
 apiVersion: fortedigital.com/v1alpha1
 kind: FdCustomAppClaim
 metadata:
-  name: fortedevapp
+  name: fortewsapp
   namespace: default
   labels:
     context: dev
 spec:
-  id: fddev
+  id: fdws
   compositionSelector:
     matchLabels:
       provider: azure
